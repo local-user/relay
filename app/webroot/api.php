@@ -1,13 +1,8 @@
 <?php
 
 
-    # namespace
-    namespace relay;
-
-    # require
+    /** init - relay **/
     require_once('../php/api.php');
-
-    # relay
     $api = new \relay\api();
 
 
