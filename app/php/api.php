@@ -28,6 +28,7 @@
 
     /** var(s) - valid **/
     private $valid_modules = array(
+        'create',
         'index'
     );
 
@@ -103,6 +104,7 @@
     /** exec **/
     private function exec() {
         try {
+			$this->init_dir();
             $this->response_code = 200;
             $this->response_data = array(
                 $this->exec_request()
@@ -137,6 +139,16 @@
             throw new \exception('Method not found');
         }
         return $object->$method();
+    }
+
+
+
+
+    /** init - dir **/
+    private function init_dir() {
+        if( ! is_dir(DIR_RELAY)      ){ throw new \exception("System relay directory '".DIR_RELAY."' could not be found"); }
+        if( ! is_writable(DIR_RELAY) ){ throw new \exception("System relay directory '".DIR_RELAY."' is not writeable");   }
+        return true;
     }
 
 
