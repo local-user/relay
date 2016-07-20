@@ -1,4 +1,18 @@
 <?php namespace relay; ?>
+<?php
+
+
+
+
+    define('DIR_APP',       realpath(__DIR__.'/../'));
+    define('DIR_RELAY',     '/tmp/relay');
+
+    define('FLAG_DEBUG',    true);
+
+
+
+
+?>
 <?php class api {
 
 
@@ -95,6 +109,7 @@
             );
             return true;
         } catch(\exception $e) {
+            if(DEBUG){ print_r($e); }
             $this->response_code = 500;
             $this->response_data = array(
                 'message' => $e->getMessage()
