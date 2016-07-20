@@ -29,6 +29,7 @@
     /** var(s) - valid **/
     private $valid_modules = array(
         'create',
+        'delete',
         'index'
     );
 
@@ -111,7 +112,7 @@
             );
             return true;
         } catch(\exception $e) {
-            if(DEBUG){ print_r($e); }
+            if(FLAG_DEBUG){ print_r($e); }
             $this->response_code = 500;
             $this->response_data = array(
                 'message' => $e->getMessage()
