@@ -76,4 +76,4 @@
 
 
 } ?>
-<?php $object = new index(); ?>
+<?php $object = new relay(); ?>

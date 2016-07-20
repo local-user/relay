@@ -28,9 +28,7 @@
 
     /** var(s) - valid **/
     private $valid_modules = array(
-        'create',
-        'delete',
-        'index'
+        'relay'
     );
 
 
