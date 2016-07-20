@@ -9,12 +9,12 @@
     private $response_data = array();
 
     /** var(s) - request **/
-    private $request_object = null;
+    private $request_module = null;
     private $request_method = null;
 
     /** var(s) - valid **/
-    private $valid_request_objects = array(
-        ''
+    private $valid_modules = array(
+        'index'
     );
 
 
@@ -22,7 +22,7 @@
 
     /** __ - construct **/
     public function __construct() {
-        $this->detect_object();
+        $this->detect_module();
         $this->detect_method();
         $this->exec();
     }
@@ -35,18 +35,18 @@
 
 
 
-    /** detect - object **/
-    private function detect_object($object = null) {
-        if(isset($_GET['object']))  { 
-            $object = $_GET['object'];
-                unset($_GET['object']);
+    /** detect - module **/
+    private function detect_module($module = null) {
+        if(isset($_GET['module']))  { 
+            $module = $_GET['module'];
+                unset($_GET['module']);
         }
-        if(isset($_POST['object'])) {
-            $object = $_POST['object'];
-                unset($_POST['object']);
+        if(isset($_POST['module'])) {
+            $module = $_POST['module'];
+                unset($_POST['module']);
         }
-        if(in_array($object, $this->valid_request_objects)) {
-            $this->request_object = $object;
+        if(in_array($module, $this->valid_modules)) {
+            $this->request_module = $module;
             return true;
         } else {
             return false;
@@ -78,7 +78,7 @@
     /** display - json **/
     private function display_json() {
         header('Content-Type: application/json');
-        http_response_code(500);
+        http_response_code($this->response_code);
         echo json_encode($this->response_data);
         return true;
     }
@@ -105,18 +105,20 @@
 
     /** exec - request **/
     private function exec_request() {
-        $object = $this->request_object;
+        $module = $this->request_module;
         $method = $this->request_method;
-        if( ! $object ){
-            throw new \exception('Invalid object.');
+        if( ! $module ){
+            throw new \exception('Invalid module');
         }
         if( ! $method ){
-            throw new \exception('Invalid method.');
+            throw new \exception('Invalid method');
         }
-        if( ! file_exists(__DIR__.'/object/'.$object.'.php')) {
-            throw new \exception('Object not found.');
+        if(   file_exists(__DIR__.'/module/'.$module.'.php')) {
+            require_once(__DIR__.'/module/'.$module.'.php');
+        } else {
+            throw new \exception('Module not found');
         }
-        if( ! method_exists($object->$method)) {
+        if( ! method_exists($object, $method)) {
             throw new \exception('Method not found');
         }
         return $object->$method();
