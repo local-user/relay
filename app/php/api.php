@@ -23,11 +23,11 @@
     private $response_data = array();
 
     /** var(s) - request **/
-    private $request_module = null;
+    private $request_object = null;
     private $request_method = null;
 
     /** var(s) - valid **/
-    private $valid_modules = array(
+    private $valid_objects = array(
         'relay'
     );
 
@@ -36,7 +36,7 @@
 
     /** __ - construct **/
     public function __construct() {
-        $this->detect_module();
+        $this->detect_object();
         $this->detect_method();
         $this->exec();
     }
@@ -49,18 +49,18 @@
 
 
 
-    /** detect - module **/
-    private function detect_module($module = null) {
-        if(isset($_GET['module']))  { 
-            $module = $_GET['module'];
-                unset($_GET['module']);
+    /** detect - object **/
+    private function detect_object($object = null) {
+        if(isset($_GET['object']))  { 
+            $object = $_GET['object'];
+                unset($_GET['object']);
         }
-        if(isset($_POST['module'])) {
-            $module = $_POST['module'];
-                unset($_POST['module']);
+        if(isset($_POST['object'])) {
+            $object = $_POST['object'];
+                unset($_POST['object']);
         }
-        if(in_array($module, $this->valid_modules)) {
-            $this->request_module = $module;
+        if(in_array($object, $this->valid_objects)) {
+            $this->request_object = $object;
             return true;
         } else {
             return false;
@@ -103,7 +103,7 @@
     /** exec **/
     private function exec() {
         try {
-			$this->init_dir();
+            $this->init_dir();
             $this->response_code = 200;
             $this->response_data = array(
                 $this->exec_request()
@@ -121,18 +121,18 @@
 
     /** exec - request **/
     private function exec_request() {
-        $module = $this->request_module;
+        $object = $this->request_object;
         $method = $this->request_method;
-        if( ! $module ){
-            throw new \exception('Invalid module');
+        if( ! $object ){
+            throw new \exception('Invalid object');
         }
         if( ! $method ){
             throw new \exception('Invalid method');
         }
-        if(   file_exists(__DIR__.'/module/'.$module.'.php')) {
-            require_once(__DIR__.'/module/'.$module.'.php');
+        if(  file_exists(__DIR__.'/object/'.$object.'.php')) {
+            require_once(__DIR__.'/object/'.$object.'.php');
         } else {
-            throw new \exception('Module not found');
+            throw new \exception('object not found');
         }
         if( ! method_exists($object, $method)) {
             throw new \exception('Method not found');
@@ -145,6 +145,7 @@
 
     /** init - dir **/
     private function init_dir() {
+        if( ! is_dir(DIR_RELAY)      ){ mkdir(DIR_RELAY);                                                                  }
         if( ! is_dir(DIR_RELAY)      ){ throw new \exception("System relay directory '".DIR_RELAY."' could not be found"); }
         if( ! is_writable(DIR_RELAY) ){ throw new \exception("System relay directory '".DIR_RELAY."' is not writeable");   }
         return true;
@@ -153,4 +154,4 @@
 
 
 
-} ?>
+}?>
