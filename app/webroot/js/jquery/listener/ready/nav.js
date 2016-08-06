@@ -8,3 +8,4 @@ $(document).ready(function() {
 
 
 });
+if( DEBUG ){ console.log(" L js/query/listener/ready/nav.js"); }
