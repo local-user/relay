@@ -24,6 +24,9 @@
         <!-- css -->
         <link rel="stylesheet" href="css/style.css">
 
+        <!-- debug -->
+        <script>var DEBUG = true</script>
+
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -33,11 +36,12 @@
 
         <!-- | container -->
         <div id="container">
-            <div class="nav">
+            <div class="spacer"></div>
+            <div id="nav" class="nav">
                 <div class="icon">
-                    <i class="material-icons large">donut_large</i>
+                    <i class="material-icons large landing">donut_large</i>
                 </div>
-                <div class="input">
+                <div class="input hidden">
                     <input name="relay" type="text" placeholder="Enter relay name" />
                 </div>
             </div>
@@ -55,7 +59,8 @@
             <script type="text/javascript" src="vendor/materialize/js/materialize.min.js"></script>
 
             <!-- pholder -->
-            <script type="text/javascript" src="js/component/breadcrumb.js" ></script>
+            <script type="text/javascript" src="js/jquery/listener/ready/nav.js" ></script>
+            <script type="text/javascript" src="js/jquery/object/ui/nav.js" ></script>
 
         <!-- javascript | -->
 
