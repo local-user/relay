@@ -5,7 +5,7 @@ $("#form-relay").submit(function() {
     var relay_name = $("#input-relay").val();
 
     // api - relay - files
-    api = relay.get_files(relay_name);
+    api = api_relay.get_files(relay_name);
     api.success(function() {
         console.log('- success');
         console.log(data);
