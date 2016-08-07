@@ -15,13 +15,12 @@
 
 
     #container {
-        width:              80%;
         height:             100%;
-        overflow:           auto;
+        width:              100%;
+        min-width:          600px;
         margin:             auto;
         position:           relative;
     }
-
 
     #container .spacer {
         width:              100%;
