@@ -5,14 +5,12 @@ var api_relay = {
 
     // | get
 
-        get_files : function(relay_name) {
-
-            // 
-            //  api_get_filES
-            //
-            //
-            console.log(relay_name);
-
+        get_files : function(relay) {
+            return $.ajax({
+                type:       "GET",
+                data:       { relay : relay },
+                url:        "php/api/session/exists.php",
+            });
         },
 
     // get |

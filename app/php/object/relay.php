@@ -4,7 +4,8 @@
 
 
 
-    /** var - invalid(s) **/
+    /** global(s) **/
+    private $relay          = null;
     private $invalid_relays = array(
         '.',
         '..'
@@ -13,60 +14,87 @@
 
 
 
-    /** create **/
-    public function create() {
+    /** | create **/
 
-        // check(s)
-        if( ! isset($_POST['name'])       ){ throw new \exception("Missing required argument 'name'");  }
-        if( ! ctype_alnum($_POST['name']) ){ throw new \exception("Invalid argument 'name'");           }
+        public function create() {
 
-        // relay
-        mkdir(DIR_RELAY."/".$_POST['name']);
+            // check(s)
+            if( ! isset($_POST['name'])       ){ throw new \exception("Missing required argument 'name'");  }
+            if( ! ctype_alnum($_POST['name']) ){ throw new \exception("Invalid argument 'name'");           }
 
-        // ? - error
-        if( ! is_dir(DIR_RELAY."/".$_POST['name']) ){
-            throw new \exception("Unable to relay relay");
+            // relay
+            mkdir(DIR_RELAY."/".$_POST['name']);
+
+            // ? - error
+            if( ! is_dir(DIR_RELAY."/".$_POST['name']) ){
+                throw new \exception("Unable to relay relay");
+            }
+
+            // return
+            return true;
+
         }
 
-        // return
-        return true;
-
-    }
+    /** create | **/
 
 
-    /** delete **/
-    public function delete() {
+    /** | delete **/
 
-        // check(s)
-        if( ! isset($_POST['name'])       ){ throw new \exception("Missing required argument 'name'");  }
-        if( ! ctype_alnum($_POST['name']) ){ throw new \exception("Invalid argument 'name'");           }
+        public function delete() {
 
-        // ? - already - deleted
-        if( ! is_dir(DIR_RELAY."/".$_POST['name']) ){
+            // set - relay
+            $this->set_relay();
+
+            // ? - already - deleted
+            if( ! is_dir(DIR_RELAY."/".$this->relay) ){ return true;}
+
+            // delete
+            rmdir(DIR_RELAY."/".$this->relay);
+
+            // ? - error - delete
+            if( is_dir(DIR_RELAY."/".$relay){
+                throw new \exception("Unable to delete relay");
+            }
+
+            // return
+            return true;
+
+        }
+
+    /** delete | **/
+
+
+
+    /** | get **/
+
+        public function get() {
+                    $relays = scandir(DIR_RELAY);
+                    $relays = array_diff($relays, $this->invalid_relays);
+                    $relays = array_values($relays);
+            return  $relays;
+        }
+
+    /** get | **/
+
+
+
+
+    /** | set **/
+
+        public function set_relay($relay = null) {
+            if( ! $relay ){
+                if( !       isset($_POST['relay']) ){ throw new \exception("Missing required argument 'name'");  }
+                if( ! ctype_alnum($_POST['relay']) ){ throw new \exception("Invalid argument 'name'");           }
+                         $relay = $_POST['relay'];
+            }
+            if( ! is_dir(DIR_RELAY.'/'.$relay) ){
+                return false;
+            }
+            $this->relay = $relay;
             return true;
         }
 
-        // delete
-        rmdir(DIR_RELAY."/".$_POST['name']);
-
-        // ? - error - delete
-        if(is_dir(DIR_RELAY."/".$_POST['name']) ){
-            throw new \exception("Unable to delete relay");
-        }
-
-        // return
-        return true;
-
-    }
-
-
-    /** get **/
-    public function get() {
-                $relays = scandir(DIR_RELAY);
-                $relays = array_diff($relays, $this->invalid_relays);
-                $relays = array_values($relays);
-        return  $relays;
-    }
+    /** set | **/
 
 
 
