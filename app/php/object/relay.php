@@ -65,16 +65,16 @@
 
 
 
-    /** | get **/
+    /** | list **/
 
-        public function get() {
+        public function list() {
                     $relays = scandir(DIR_RELAY);
                     $relays = array_diff($relays, $this->invalid_relays);
                     $relays = array_values($relays);
             return  $relays;
         }
 
-    /** get | **/
+    /** list | **/
 
 
 
