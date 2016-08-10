@@ -10,7 +10,7 @@ $("#form-relay").submit(function() {
 
         // ui - display(s)
         ui_files.files_display();
-        ui_nav.icon_display_success();
+        ui_nav.icon_display_valid();
         ui_upload.upload_display();
 
         // ui - hide(s)

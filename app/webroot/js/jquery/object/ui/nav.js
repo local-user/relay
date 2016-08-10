@@ -35,7 +35,7 @@ var ui_nav = {
         icon : function() {
             $('#nav .icon i').removeClass('landing');
             $('#nav .icon i').removeClass('error');
-            $('#nav .icon i').removeClass('success');
+            $('#nav .icon i').removeClass('valid');
         },
 
         icon_display : function() {
@@ -49,10 +49,10 @@ var ui_nav = {
             }, 1);
         },
 
-        icon_display_success : function() {
+        icon_display_valid : function() {
             this.icon_display();
             setTimeout(function() {
-                $('#nav .icon i').addClass('success');
+                $('#nav .icon i').addClass('valid');
             }, 1);
         }
 

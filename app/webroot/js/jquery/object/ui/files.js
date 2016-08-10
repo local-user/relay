@@ -6,7 +6,9 @@ var ui_files = {
     // | append
 
         append_table : function( relay, filename ) {
-            console.log(relay + ": " + filename);
+            $("#files table tbody").append(
+                '<tr><td>' + filename + '</td><td></td></tr>'
+            );
         },
 
     // append |

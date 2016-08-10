@@ -8,6 +8,7 @@
         border:                             1px solid #2b2b2b;
     }
 
+
     #nav .icon {
         margin:                             8px auto;
         float:                              left;
@@ -26,6 +27,13 @@
     #nav .icon i.error {
         animation-name:                     spin_error;
         animation-duration:                 3s;
+        animation-iteration-count:          1;
+    }
+
+    #nav .icon i.valid {
+        animation-name:                     spin_valid;
+        animation-duration:                 3s;
+        animation-fill-mode:                forwards;
         animation-iteration-count:          1;
     }
 
@@ -65,11 +73,24 @@
                     color:      black
                 }
         50%     {
-                    color:      red;
+                    color:      #F44336;
                 }
         100%    {
                     transform:  rotate(720deg);
                     color:      black;
+                }
+    }
+
+    @keyframes spin_valid {
+        0%      {
+                    transform:  rotate(0deg);
+                    color:      black
+                }
+        50%     {
+                    color:      #26A69A;
+                }
+        100%    {
+                    transform:  rotate(810deg);
                 }
     }
 
