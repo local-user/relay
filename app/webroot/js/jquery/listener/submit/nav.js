@@ -6,13 +6,22 @@ $("#form-relay").submit(function() {
 
     // api - relay - files
     api = api_relay.get_files(relay_name);
-    api.success(function() {
-        console.log('- success');
-        console.log(data);
+    api.success(function(data) {
+
+        // api - iterate - data
+        $.each( data[0], function( key, value ){
+
+            // ui - files - append
+            ui_files.append( value );
+
+        });
+
     });
     api.error(function() {
-        console.log('- error');
-        console.log(data);
+
+        // ui - input - error
+        console.log(' ui input error ');
+
     });
 
 
