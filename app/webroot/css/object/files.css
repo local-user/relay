@@ -29,6 +29,7 @@
 
     #files table thead th.date {
         width:                              30%;
+        text-align:                         center;
     }
 
     #files table thead th.filename {
@@ -42,5 +43,15 @@
     #files table tbody tr {
         cursor:                             pointer;
     }
+
+    #files table tbody tr td {}
+
+    #files table tbody tr td.date {
+        text-align:                         center;
+    }
+
+    #files table tbody tr td.filename {}
+
+
 
 
