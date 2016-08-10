@@ -20,10 +20,18 @@
 
         public function list() {
                     $this->set_input_relay();
+                    $list  = array();
+                    $relay = DIR_RELAY.'/'.$this->input_relay;
                     $files = scandir(DIR_RELAY.'/'.$this->input_relay);
                     $files = array_diff($files, $this->invalid_files);
                     $files = array_values($files);
-            return  $files;
+            foreach($files as $file){
+                $list[] = array(
+                    'filename'      => $file,
+                    'date_modified' => filemtime($relay.'/'.$file)
+                );
+            }
+            return  $list;
         }
 
     /** list | **/
