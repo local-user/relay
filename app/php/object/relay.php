@@ -41,6 +41,7 @@
                         $files = scandir($relay);
                         $files = array_diff($files, $this->invalid_files);
                         $files = array_values($files);
+                natsort($files);
 
                 // prepare- file(s) - extra
                 foreach($files as $file){
