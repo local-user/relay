@@ -8,33 +8,30 @@ $("#form-relay").submit(function() {
     api = api_relay.get_files(relay);
     api.success(function(data) {
 
-        // ui - spacer - top - hide
-        ui_spacer.top_hide();
-
-        // ui - upload - display
+        // ui - display(s)
+        ui_files.files_display();
+        ui_nav.icon_display_success();
         ui_upload.upload_display();
 
-        // ui - files - display
-        ui_files.files_display();
+        // ui - hide(s)
+        ui_spacer.top_hide();
 
         // api - iterate - data
         $.each( data[0], function( key, filename ){
-
-            // ui - files - table - append
             ui_files.append_table( relay, filename );
-
         });
 
     });
     api.error(function() {
 
-        console.log('error');
-
-        // ui - nav - input - error
+        // ui - display(s)
         ui_nav.input_display_error();
-
-        // ui - nav - icon - error
         ui_nav.icon_display_error();
+        ui_spacer.top_display();
+
+        // ui - hide(s)
+        ui_files.files_hide();
+        ui_upload.upload_hide();
 
     });
 

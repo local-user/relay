@@ -51,7 +51,9 @@ var ui_nav = {
 
         icon_display_success : function() {
             this.icon_display();
-            $('#nav .icon i').addClass('success');
+            setTimeout(function() {
+                $('#nav .icon i').addClass('success');
+            }, 1);
         }
 
     // icon |
