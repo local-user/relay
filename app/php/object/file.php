@@ -5,8 +5,8 @@
 
 
     /** var - input(s) **/
-    private $input_relay    = null;
-    private $input_filename = null;
+    private $relay    = null;
+    private $filename = null;
 
 
 
@@ -14,8 +14,8 @@
     /** | __ **/
 
         public function __construct() {
-            $this->input_filename = $_GET['filename'];
-            $this->input_relay    = $_GET['relay'];
+            $this->filename = $_GET['filename'];
+            $this->relay    = $_GET['relay'];
         }
 
     /** __ | **/
@@ -26,7 +26,7 @@
     /** | download **/
 
         public function download() {
-            $file = DIR_RELAY.'/'.$this->input_relay.'/'.$this->input_filename;
+            $file = DIR_RELAYS.'/'.$this->relay.'/'.$this->filename;
             if( is_readable($file) ){
                 header('Content-Description: File Transfer');
                 header('Content-Type: application/octet-stream');
