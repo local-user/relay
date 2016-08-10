@@ -19,7 +19,7 @@
     /** | __ **/
 
         public function __construct() {
-            if( isset($_GET['relay']) ){ $this->relay = $relay; }
+            if( isset($_GET['relay']) ){ $this->relay = $_GET['relay']; }
         }
 
     /** **| **/
@@ -28,13 +28,14 @@
 
     /** | list **/
 
-        public function list() {
+        public function files() {
 
-                        // var - list
+                        // var - list/relay
                          $list  = array();
-
-                        // var - relay
                         $relay = DIR_RELAYS.'/'.$this->relay;
+
+                        // ? - valid - dir
+                         if( ! is_dir($relay) ){ return false;}
 
                         // prepare - relay - files
                         $files = scandir($relay);

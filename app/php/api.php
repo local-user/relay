@@ -5,7 +5,7 @@
 
 
     define('DIR_APP',       realpath(__DIR__.'/../'));
-    define('DIR_RELAY',     '/tmp/relay');
+    define('DIR_RELAYS',    '/tmp/relay');
 
     define('FLAG_DEBUG',    true);
 
@@ -147,9 +147,9 @@
 
     /** init - dir **/
     private function init_dir() {
-        if( ! is_dir(DIR_RELAY)      ){ mkdir(DIR_RELAY);                                                                  }
-        if( ! is_dir(DIR_RELAY)      ){ throw new \exception("System relay directory '".DIR_RELAY."' could not be found"); }
-        if( ! is_writable(DIR_RELAY) ){ throw new \exception("System relay directory '".DIR_RELAY."' is not writeable");   }
+        if( ! is_dir(DIR_RELAYS)      ){ mkdir(DIR_RELAYS);                                                                  }
+        if( ! is_dir(DIR_RELAYS)      ){ throw new \exception("System relay directory '".DIR_RELAYS."' could not be found"); }
+        if( ! is_writable(DIR_RELAYS) ){ throw new \exception("System relay directory '".DIR_RELAYS."' is not writeable");   }
         return true;
     }
 

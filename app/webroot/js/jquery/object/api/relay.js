@@ -9,8 +9,8 @@ var api_relay = {
             return $.ajax({
                 type:       'GET',
                 data:       {
-                                object : 'files',
-                                method : 'list',
+                                object : 'relay',
+                                method : 'files',
                                 relay  : relay
                             },
                 url:        'api.php',
