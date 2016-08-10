@@ -1,18 +1,21 @@
 $("#form-relay").submit(function() {
 
 
-    // get - relay - name
-    var relay_name = $("#input-relay").val();
+    // get - relay
+    var relay = $("#input-relay").val();
 
     // api - relay - files
-    api = api_relay.get_files(relay_name);
+    api = api_relay.get_files(relay);
     api.success(function(data) {
 
         // api - iterate - data
-        $.each( data[0], function( key, value ){
+        $.each( data[0], function( key, filename ){
 
-            // ui - files - append
-            ui_files.append( value );
+            // ui - files - table - display
+            ui_files.table_display();
+
+            // ui - files - table - append
+            ui_files.append_table( relay, filename );
 
         });
 
@@ -20,7 +23,7 @@ $("#form-relay").submit(function() {
     api.error(function() {
 
         // ui - input - error
-        console.log(' ui input error ');
+        ui_error.display('Unable to retrieve relay files');
 
     });
 

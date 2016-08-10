@@ -2,49 +2,47 @@
 
 
 
-    .nav {
+    #nav {
+        height:                             100px;
         width:                              100%;
-        text-align:                         center;
+        border:                             1px solid #2b2b2b;
     }
 
-    .nav .icon {
+    #nav .icon {
+        margin:                             8px auto;
+        float:                              left;
         height:                             100px;
-        width:                              100px;
-        border:                             1px solid #2b2b2b;
         color:                              #2b2b2b;
-        display:                            inline-block;
         overflow:                           hidden;
-        padding:                            8px;
         text-align:                         right;
     }
 
-    .nav .icon i.landing {
+    #nav .icon i.landing {
         animation-name:                     spin;
         animation-duration:                 2s;
         animation-iteration-count:          1;
     }
 
 
-    .nav .input {
-        border:                             1px solid #2b2b2b;
+    #nav .input {
+        float:                              right;
         height:                             100px;
-        display:                            inline-block;
-        width:                              450px;
+        width:                              84%;
         overflow:                           hidden;
-        padding:                            8px 10px 10px 8px;
         transition:                         2s;
     }
 
-    .nav .input.hidden {
+    #nav .input.hidden {
         border:                             none;
         min-width:                          0;
         width:                              0;
         padding:                            0;
     }
 
-    .nav .input input {
-        font-size:                          18px;
-        padding:                            12px;
+    #nav .input input {
+        text-align:                         center;
+        font-size:                          24px;
+        padding:                            20px 0 10px 0;
     }
 
 

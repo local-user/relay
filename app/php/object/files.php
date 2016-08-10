@@ -5,7 +5,7 @@
 
 
     /** var - input(s) **/
-    private $relay =null;
+    private $input_relay = null;
 
     /** var - invalid(s) **/
     private $invalid_files = array(
@@ -16,32 +16,28 @@
 
 
 
-    /** | get **/
+    /** | list **/
 
-        public function get() {
-
-                    // set - relay
-                    $this->set_relay();
-
-                    // get - file(s)
-                    $files = scandir(DIR_RELAY.'/',$rthis->input_relay);
-                    $files = array_diff($filess, $this->invalid_filess);
-                    $files = array_values($filess);
+        public function list() {
+                    $this->set_input_relay();
+                    $files = scandir(DIR_RELAY.'/'.$this->input_relay);
+                    $files = array_diff($files, $this->invalid_files);
+                    $files = array_values($files);
             return  $files;
-
         }
 
-    /** get | **/
+    /** list | **/
 
 
 
 
     /** | set **/
 
-        public function set_relay($relay = null) {
-            if( ! isset($_POST['relay'])       ){ throw new \exception("Missing required argument 'name'");  }
-            if( ! ctype_alnum($_POST['relay']) ){ throw new \exception("Invalid argument 'name'");           }
-            $this->input_relay =$_POST['relay'];
+        public function set_input_relay() {
+            if( ! isset($_GET['relay'])                ){ throw new \exception("Invalid argument 'relay'"); }
+            if( ! ctype_alnum($_GET['relay'])          ){ throw new \exception("Invalid argument 'relay'"); }
+            if( ! is_dir(DIR_RELAY.'/'.$_GET['relay']) ){ throw new \exception("Invalid argument 'relay'"); }
+            $this->input_relay = $_GET['relay'];
             return true;
         }
 

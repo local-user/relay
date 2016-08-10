@@ -7,9 +7,13 @@ var api_relay = {
 
         get_files : function(relay) {
             return $.ajax({
-                type:       "GET",
-                data:       { relay : relay },
-                url:        "php/api/session/exists.php",
+                type:       'GET',
+                data:       {
+                                object : 'files',
+                                method : 'list',
+                                relay  : relay
+                            },
+                url:        'api.php',
             });
         },
 
@@ -19,4 +23,4 @@ var api_relay = {
 
 
 }
-if( DEBUG ){ console.log(" L js/query/object/ui/nav.js"); }
+if( DEBUG ){ console.log(' L js/query/object/ui/nav.js'); }

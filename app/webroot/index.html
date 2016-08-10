@@ -7,9 +7,9 @@
 
         <!-- meta -->
         <meta charset="utf-8">
-        <meta name="author"         content="local-user"            />
-        <meta name="description"    content="A file relay tool."    />
-        <meta name="theme-color"    content="#03a9f4"               />
+        <meta name="author"         content="local-user"                                        />
+        <meta name="description"    content="File relay used to quick transfers on a network"   />
+        <meta name="theme-color"    content="#03a9f4"                                           />
 
         <!-- icon -->
         <link rel="icon" href="img/icon.256x256.png">
@@ -23,6 +23,9 @@
 
         <!-- css -->
         <link rel="stylesheet" href="css/container.css">
+
+        <!-- css - object(s) -->
+        <link rel="stylesheet" href="css/object/files.css">
         <link rel="stylesheet" href="css/object/nav.css">
 
         <!-- debug -->
@@ -48,7 +51,16 @@
                     </form>
                 </div>
             </div>
-            <div class="body">
+            <div id="files" class="files">
+                <table class="hidden">
+                    <thead>
+                        <th>Relay</th>
+                        <th>Filename</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- container | -->
@@ -69,6 +81,7 @@
 
                 <!-- object(s) -->
                 <script type="text/javascript" src="js/jquery/object/api/relay.js"              ></script>
+                <script type="text/javascript" src="js/jquery/object/ui/files.js"               ></script>
                 <script type="text/javascript" src="js/jquery/object/ui/nav.js"                 ></script>
 
                 <!-- patch(s) -->

@@ -28,6 +28,7 @@
 
     /** var(s) - valid **/
     private $valid_objects = array(
+        'files',
         'relay'
     );
 
