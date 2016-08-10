@@ -14,22 +14,22 @@ var ui_files = {
 
 
 
-    // | table
+    // | files
 
-        table : function() {
-            $("#files table").addClass("hidden");
+        files : function() {
+            $("#files").addClass("hidden");
         },
 
-        table_display : function() {
-            this.table();
-            $("#files table").removeClass("hidden");
+        files_display : function() {
+            this.files();
+            $("#files").removeClass("hidden");
         },
 
-        table_hide : function() {
-            this.table();
+        files_hide : function() {
+            this.files();
         }
 
-    // display |
+    // files |
 
 
 

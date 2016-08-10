@@ -1,0 +1,21 @@
+
+
+
+
+    #upload {
+        border:                             1px solid #2b2b2b;
+        height:                             10%;
+        width:                              100%;
+        overflow:                           hidden;
+        transition:                         1s;
+        margin:                             10px 0 18px 0;
+    }
+
+    #upload.hidden {
+        margin:                             0;
+        height:                             0;
+    }
+
+
+
+

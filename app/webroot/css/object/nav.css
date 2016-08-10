@@ -23,6 +23,12 @@
         animation-iteration-count:          1;
     }
 
+    #nav .icon i.error {
+        animation-name:                     spin_error;
+        animation-duration:                 3s;
+        animation-iteration-count:          1;
+    }
+
 
     #nav .input {
         float:                              right;
@@ -49,20 +55,21 @@
 
 
     @keyframes spin {
-        0%      {
-                    transform: rotate(0deg);
-                }
-        100%    {
-                    transform: rotate(720deg);
-                }
+        0%      { transform: rotate(0deg);   }
+        100%    { transform: rotate(720deg); }
     }
 
-    @keyframes spin_vertical {
+    @keyframes spin_error {
         0%      {
-                    transform: rotate(0deg);
+                    transform:  rotate(0deg);
+                    color:      black
+                }
+        50%     {
+                    color:      red;
                 }
         100%    {
-                    transform: rotate(810deg);
+                    transform:  rotate(720deg);
+                    color:      black;
                 }
     }
 

@@ -1,0 +1,17 @@
+
+
+
+
+    .spacer {
+        height:                     35%;
+        width:                      500px;
+        transition:                 0.5s;
+    }
+
+    .spacer.hidden {
+        height:                     5%;
+    }
+
+
+
+

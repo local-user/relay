@@ -25,8 +25,10 @@
         <link rel="stylesheet" href="css/container.css">
 
         <!-- css - object(s) -->
-        <link rel="stylesheet" href="css/object/files.css">
-        <link rel="stylesheet" href="css/object/nav.css">
+        <link rel="stylesheet" href="css/object/files.css"  />
+        <link rel="stylesheet" href="css/object/nav.css"    />
+        <link rel="stylesheet" href="css/object/spacer.css" />
+        <link rel="stylesheet" href="css/object/upload.css" />
 
         <!-- debug -->
         <script>var DEBUG = true</script>
@@ -40,21 +42,30 @@
 
         <!-- | container -->
         <div id="container">
+
+            <!-- spacer -->
             <div class="spacer"></div>
-            <div id="nav" class="nav">
+
+            <!-- nav -->
+            <div id="nav">
                 <div class="icon">
                     <i class="material-icons large landing">repeat</i>
                 </div>
                 <div class="input hidden">
                     <form id="form-relay" onsubmit="return false;">
-                        <input id="input-relay" name="relay" type="text" placeholder="Enter relay name" />
+                        <input id="input-relay" name="relay" type="text" placeholder="Enter relay name" autocomplete="off" />
                     </form>
                 </div>
             </div>
-            <div id="files" class="files">
-                <table class="hidden">
+
+            <!-- upload -->
+            <div id='upload' class="hidden">
+            </div>
+
+            <!-- files -->
+            <div id="files" class="hidden">
+                <table>
                     <thead>
-                        <th>Relay</th>
                         <th>Filename</th>
                         <th>Date</th>
                     </thead>
@@ -62,6 +73,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
         <!-- container | -->
 
@@ -83,6 +95,8 @@
                 <script type="text/javascript" src="js/jquery/object/api/relay.js"              ></script>
                 <script type="text/javascript" src="js/jquery/object/ui/files.js"               ></script>
                 <script type="text/javascript" src="js/jquery/object/ui/nav.js"                 ></script>
+                <script type="text/javascript" src="js/jquery/object/ui/spacer.js"              ></script>
+                <script type="text/javascript" src="js/jquery/object/ui/upload.js"              ></script>
 
                 <!-- patch(s) -->
 
