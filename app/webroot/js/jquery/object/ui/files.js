@@ -5,13 +5,27 @@ var ui_files = {
 
     // | append
 
-        append_table : function( relay, filename ) {
+        append_table : function( relay, file ) {
             $("#files table tbody").append(
-                '<tr><td>' + filename + '</td><td></td></tr>'
+                '<tr>' +
+                    '<td>' + file['filename']      + '</td>' +
+                    '<td>' + file['date_modified'] + '</td>' +
+                '</tr>'
             );
         },
 
     // append |
+
+
+
+
+    // | empty
+
+        empty_table : function() {
+            $("#files table tbody").empty();
+        },
+
+    // empty |
 
 
 

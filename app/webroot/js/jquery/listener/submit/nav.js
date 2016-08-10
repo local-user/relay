@@ -16,9 +16,12 @@ $("#form-relay").submit(function() {
         // ui - hide(s)
         ui_spacer.top_hide();
 
+        // ui - files - empty
+        ui_files.empty_table();
+
         // api - iterate - data
-        $.each( data[0], function( key, filename ){
-            ui_files.append_table( relay, filename );
+        $.each( data[0], function( key, file ){
+            ui_files.append_table( relay, file );
         });
 
     });
