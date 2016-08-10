@@ -18,3 +18,29 @@
 
 
 
+    #files table {
+
+    }
+
+
+    #files table thead {}
+
+    #files table thead th {}
+
+    #files table thead th.date {
+        width:                              30%;
+    }
+
+    #files table thead th.filename {
+        border-right:                       1px solid #2b2b2b;
+        width:                              70%;
+    }
+
+
+    #files table tbody {}
+
+    #files table tbody tr {
+        cursor:                             pointer;
+    }
+
+
