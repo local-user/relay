@@ -7,7 +7,7 @@ var ui_files = {
 
         append_table : function( relay, file ) {
             $("#files table tbody").append(
-                '<tr class="download" data-filename="' + file['filename'] + '" >' +
+                '<tr class="file" data-filename="' + file['filename'] + '" data-relay="' + relay + '" >' +
                     '<td class="filename">' + file['filename']      + '</td>' +
                     '<td class="date">'     + file['date_modified'] + '</td>' +
                 '</tr>'
