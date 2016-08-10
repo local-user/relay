@@ -8,6 +8,9 @@ $( "#files" ).on( "click", ".file", function() {
     // file - download
     api_file.download( relay, filename );
 
+    // file - deppend
+    ui_file.deppend_table( relay, filename );
+
 
 });
 if( DEBUG ){ console.log(' L js/jquery/listener/click/file.js'); }

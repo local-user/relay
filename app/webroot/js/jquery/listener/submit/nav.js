@@ -21,7 +21,7 @@ $("#form-relay").submit(function() {
 
         // api - iterate - data
         $.each( data[0], function( key, file ){
-            ui_files.append_table( relay, file );
+            ui_file.append_table( relay, file['filename'], file['date_modified'] );
         });
 
     });

@@ -1,0 +1,32 @@
+var ui_file = {
+
+
+
+
+    // | append
+
+        append_table : function( relay, filename, date_modified ) {
+            $("#files table tbody").append(
+                '<tr class="file" data-filename="' + filename + '" data-relay="' + relay + '" >' +
+                    '<td class="filename">' + filename      + '</td>' +
+                    '<td class="date">'     + date_modified + '</td>' +
+                '</tr>'
+            );
+        },
+
+    // append |
+
+
+    // | deppend
+
+        deppend_table : function( relay, filename ){
+            $('#files table tbody tr').filter('[data-filename="' + filename +'"]').remove();
+        }
+
+    // deppend |
+
+
+
+
+}
+if( DEBUG ){ console.log(' L js/query/object/ui/file.js'); }

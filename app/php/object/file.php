@@ -42,7 +42,7 @@
                 unlink($file);
                 exit;
             } else {
-                throw new exception('Unable to download file');
+                throw new \exception('Unable to download file');
             }
         }
 
