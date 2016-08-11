@@ -40,7 +40,6 @@
                 flush();
                 readfile($file);
                 unlink($file);
-                exit;
             } else {
                 throw new \exception('Unable to download file');
             }
