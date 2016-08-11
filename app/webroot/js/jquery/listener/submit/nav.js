@@ -24,6 +24,9 @@ $("#form-relay").submit(function() {
             ui_file.append_table( relay, file['filename'], file['date_modified'] );
         });
 
+        // ui - upload - drozone - ready
+        ui_upload.dropzone_ready(relay);
+
     });
     api.error(function() {
 

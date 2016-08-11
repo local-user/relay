@@ -71,7 +71,7 @@
                 foreach($files as $file){
                     $list[] = array(
                         'filename'      => $file,
-                        'date_modified' => date ("H:i:s - d-m-Y", filemtime($relay.'/'.$file))
+                        'date_modified' => date ("d/m/Y", filemtime($relay.'/'.$file))
                     );
                 }
 
