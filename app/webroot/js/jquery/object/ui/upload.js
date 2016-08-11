@@ -11,6 +11,9 @@ var ui_upload = {
 
         dropzone_ready : function(relay) {
 
+            // var - link
+            var link = this;
+
             // dropzone - reset
             this.dropzone(relay);
 
@@ -19,12 +22,31 @@ var ui_upload = {
             $("#upload form").dropzone({
                 dictDefaultMessage:     "Drag or click to upload a file to the relay.",
                 init:                   function () {
+
+                                            // dropzone - on - file - upload- sent
                                             this.on("complete", function (file) {
-                                                console.log(file);
+                                                api = api_relay.get_files(relay);
+                                                api.success(function(data) {
+
+                                                    // refresh - files
+                                                    ui_files.empty_table();
+                                                    $.each( data[0], function( key, file ){
+                                                        ui_file.append_table( relay, file['filename'], file['date_modified'] );
+                                                    });
+
+                                                    // update - display
+                                                    setTimeout(function() {
+                                                        link.dropzone_ready(relay);
+                                                    }, 1000);
+
+                                                });
                                             });
+
+                                            // dropzone - on - file - upload - sending
                                             this.on('sending', function(file, xhr, formData){
-                                                console.log(file);
+                                                link.dropzone_sending();
                                             });
+
                                         },
                 maxFiles:               1,
                 error:                  function(file, response){
@@ -33,6 +55,15 @@ var ui_upload = {
                 url:                    "api.php?object=file&method=upload&relay=" + relay
             });
 
+        },
+
+        dropzone_sending : function() {
+            this.dropzone();
+            $("#upload").append(
+                '<div class="progress">' +
+                    '<div class="indeterminate"></div>' +
+                '</dv>'
+            );
         },
 
     // dropzone |
