@@ -83,11 +83,11 @@
     /** | detect **/
 
         private function detect_object($object = null) {
-            if(isset($_GET['object']))  { 
+            if( isset($_GET['object']) ){ 
                 $object = $_GET['object'];
                     unset($_GET['object']);
             }
-            if(in_array($object, $this->valid_objects)) {
+            if( in_array($object, $this->valid_objects) ){
                 $this->request_object = $object;
                 return true;
             } else {
@@ -96,11 +96,11 @@
         }
 
         private function detect_method($method = null) {
-            if(isset($_GET['method']))  {
+            if( isset($_GET['method']) ){
                 $method = $_GET['method'];
                     unset($_GET['method']);
             }
-            if($method) {
+            if( $method ){
                 $this->request_method = $method;
                 return true;
             } else {
