@@ -12,3 +12,6 @@ A file relay.
 - `relay/relay --server --built-in`
 - `relay/relay --server --built-in localhost:4040`
 - `relay/relay --server --vagrant`
+
+##note(s)
+- Max file upload size is limited by php.ini, adjust to increase.
