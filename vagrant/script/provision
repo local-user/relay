@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+#   script - provision
+#
+
+
+    # export - noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+
+    # set - x
+    set -x
+
+
+    # | apt
+
+        # update
+        apt-get update
+
+        # upgrade
+        apt-get upgrade -q -y
+
+        # install - lamp
+        apt-get install -q -y lamp-server^
+
+        # install - extra
+        apt-get install -q -y fail2ban tree
+
+    # apt |
+
+
+    # | apache2
+    if [ -d '/var/www/html' ]; then
+
+        # remove - existing
+        rm -r '/var/www/html'
+
+        # default - site - webroot
+        sed -i s/html/webroot/g /etc/apache2/sites-enabled/000-default.conf
+
+    fi
+    # apache2 |
+
+
+    # | relay
+    if [ -d '/tmp/app' ]; then
+
+        # ? - exists
+        [ -d '/var/www' ] && rm -r '/var/www'
+
+        # mv - app => folder
+        mv '/tmp/app' '/var/www'
+
+        # set - ownership
+        chown -R root:root          '/var/www'
+        chown -R www-data:www-data  '/var/www/tmp'
+
+        # set - permission(s)
+        find '/var/www' -type d -exec chmod 755 {} \;
+        find '/var/www' -type f -exec chmod 644 {} \;
+
+    fi
+    # relay |
+
+
+    # reload - apache2
+    service apache2 reload
+
+

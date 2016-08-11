@@ -1,0 +1,64 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version.
+VAGRANTFILE_API_VERSION = "2"
+
+# | Vagrant
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+
+    # | global
+
+        # base - box
+        config.vm.box = "ubuntu/trusty64"
+
+        # copy - app
+        config.vm.provision "file", source: "../app", destination: "/tmp/app"
+
+        # network - adapter - bridged
+        config.vm.network "public_network"
+
+        # provision - shell - bash
+        config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+        config.vm.provision "shell", path: "script/provision"
+
+        # ssh - agent - fowarding
+        config.ssh.forward_agent = true
+
+        # | VirtualBox
+        config.vm.provider "virtualbox" do |vb|
+            vb.cpus = 2
+            vb.customize [
+                "modifyvm", :id,
+                "--memory", "1024",
+            ]
+        end
+        # VirtualBox |
+
+    # global |
+
+
+    # | machine(s)
+
+        # build-relay
+        config.vm.define "build-relay" do |web|
+            config.vm.hostname = "build-relay"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "build-relay"
+            end
+        end
+
+        # relay
+        config.vm.define "relay" do |web|
+            config.vm.hostname = "relay"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "relay"
+            end
+        end
+
+    # machine(s) |
+
+
+end
+# Vagrant |
