@@ -5,7 +5,7 @@
 
 
     define('DIR_APP',       realpath(__DIR__.'/../'));
-    define('DIR_RELAYS',    '/tmp/relay');
+    define('DIR_RELAYS',    __DIR__.'/../tmp');
 
     define('FLAG_DEBUG',    true);
 
@@ -68,8 +68,14 @@
 
         private function check_args() {
             foreach( $_GET as $key => $value ){
-                if( ! ctype_alnum($value) ){
-                    return false;
+                if( $key == 'filename' ){
+                    if( ! preg_match('/^([-\.\w]+)$/', $value) ){
+                        return false;
+                    }
+                } else {
+                    if( ! ctype_alnum($value) ){
+                        return false;
+                    }
                 }
             }
             return true;
