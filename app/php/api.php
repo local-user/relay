@@ -116,10 +116,14 @@
     /** | display **/
 
         private function display_json() {
-            header('Content-Type: application/json');
-            http_response_code($this->response_code);
-            echo json_encode($this->response_data);
-            return true;
+            if( $this->request_method != 'download' ){
+                header('Content-Type: application/json');
+                http_response_code($this->response_code);
+                  echo json_encode($this->response_data);
+                return true;
+            } else {
+                return false;
+            }
         }
 
     /** display | **/
