@@ -26,16 +26,40 @@
 
 
 
+
+    /** | create **/
+
+        public function create() {
+
+            // var - list
+            $relay = DIR_RELAYS.'/'.$this->relay;
+
+            // check(s) **/
+            if( ! $this->relay                  ){ throw new \exception('invalid relay');           }
+            if(   is_dir($relay)                ){ return true;                                     }
+            if( ! is_writeable(dirname($relay)) ){ throw new \exception('directory not writeable'); }
+
+            // return
+            return mkdir($relay);
+
+        }
+
+    /** create | **/
+
+
+
+
     /** | list **/
 
         public function files() {
 
                         // var - list/relay
-                         $list  = array();
+                        $list  = array();
                         $relay = DIR_RELAYS.'/'.$this->relay;
 
-                        // ? - valid - dir
-                         if( ! is_dir($relay) ){ return false;}
+                        // ? - check(s)
+                        if( ! $this->relay   ){ throw new \exception('invalid relay'); }
+                        if( ! is_dir($relay) ){ $this->create();                       }
 
                         // prepare - relay - files
                         $files = scandir($relay);
