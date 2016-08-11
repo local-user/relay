@@ -28,3 +28,16 @@
     }
 
 
+    #upload .progress {
+        height:                             85%;
+        width:                              100%;
+        background-color:                   white;
+    }
+
+    #upload .progress .indeterminate {
+        background-color:                   #2b2b2b;
+    }
+
+
+
+
