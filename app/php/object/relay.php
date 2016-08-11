@@ -70,8 +70,8 @@
                 // prepare- file(s) - extra
                 foreach($files as $file){
                     $list[] = array(
-                        'filename'      => $file,
-                        'date_modified' => date ("d/m/Y", filemtime($relay.'/'.$file))
+                        'filename'  => $file,
+                        'ttl'       => 'ttl'
                     );
                 }
 

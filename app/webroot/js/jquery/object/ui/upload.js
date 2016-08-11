@@ -31,7 +31,7 @@ var ui_upload = {
                                                     // refresh - files
                                                     ui_files.empty_table();
                                                     $.each( data[0], function( key, file ){
-                                                        ui_file.append_table( relay, file['filename'], file['date_modified'] );
+                                                        ui_file.append_table( relay, file['filename'], file['ttl'] );
                                                     });
 
                                                     // update - display

@@ -5,11 +5,11 @@ var ui_file = {
 
     // | append
 
-        append_table : function( relay, filename, date_modified ) {
+        append_table : function( relay, filename, ttl ) {
             $("#files table tbody").append(
                 '<tr class="file" data-filename="' + filename + '" data-relay="' + relay + '" >' +
                     '<td class="filename">' + filename      + '</td>' +
-                    '<td class="date">'     + date_modified + '</td>' +
+                    '<td class="ttl">'      + ttl           + '</td>' +
                 '</tr>'
             );
         },
