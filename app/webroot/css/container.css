@@ -16,7 +16,8 @@
 
     #container {
         height:             100%;
-        width:              600px;
+        width:              80%;
+        min-width:          600px;
         margin:             auto;
         position:           relative;
     }
